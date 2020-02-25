@@ -15,7 +15,12 @@ class CreateAsistenciaTable extends Migration
     {
         Schema::create('asistencia', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+
+            $table->unsignedInteger('dia_id');
+            $table->foreign('dia_id')->references('id')->on('dia')->onDelete('cascade');
+
+            $table->unsignedInteger('estudiante_id');
+            $table->foreign('estudiante_id')->references('id')->on('estudiante')->onDelete('cascade');
         });
     }
 

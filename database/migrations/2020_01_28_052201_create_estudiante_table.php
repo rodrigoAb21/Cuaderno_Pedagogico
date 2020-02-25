@@ -15,7 +15,16 @@ class CreateEstudianteTable extends Migration
     {
         Schema::create('estudiante', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->text('nombre');
+            $table->text('apellido_paterno');
+            $table->text('apellido_materno');
+            $table->text('rude');
+            $table->date('fnac');
+            $table->text('ci');
+            $table->integer('edad');
+            $table->text('tutor');
+            $table->text('direccion');
+            $table->text('telefono');
         });
     }
 
