@@ -16,3 +16,5 @@ Route::post('logout', [
 Route::get('/', function () {
     return view('home');
 });
+
+Route::resource('estudiantes', 'EstudianteController');

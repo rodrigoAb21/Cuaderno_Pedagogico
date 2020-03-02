@@ -39,7 +39,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand ligh" href="{{url('administrador')}}">
+                    <a class="navbar-brand ligh" href="{{url('/')}}">
                         <!-- Logo icon -->
                         <b class="light-logo">
                             <i class="fa fa-school"></i>
@@ -83,43 +83,43 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
 
-                        <li class="{{ Request::is('administrador/estudiantes*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('administrador/estudiantes')}}" >
+                        <li class="{{ Request::is('estudiantes*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('estudiantes')}}" >
                                 <i class="fa fa-user-graduate"></i>
                                 <span class="hide-menu"> Estudiantes</span>
                             </a>
                         </li>
 
 
-                        <li class="{{ Request::is('administrador/asistencias*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('administrador/asistencias')}}" >
+                        <li class="{{ Request::is('asistencias*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('asistencias')}}" >
                                 <i class="fa fa-calendar-check"></i>
                                 <span class="hide-menu"> Asistencias</span>
                             </a>
                         </li>
 
 
-                        <li class="{{ Request::is('administrador/actividades*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('administrador/actividades')}}" >
+                        <li class="{{ Request::is('actividades*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('actividades')}}" >
                                 <i class="fa fa-pen-alt"></i>
                                 <span class="hide-menu"> Actividades</span>
                             </a>
                         </li>
 
-                        <li class="{{ Request::is('administrador/materias*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('administrador/materias')}}" >
+                        <li class="{{ Request::is('materias*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('materias')}}" >
                                 <i class="fa fa-book"></i>
                                 <span class="hide-menu"> Materias</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is('administrador/trimestres*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('administrador/trimestres')}}" >
+                        <li class="{{ Request::is('trimestres*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('trimestres')}}" >
                                 <i class="fa fa-list-ol"></i>
                                 <span class="hide-menu"> Trimestres</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is('administrador/dimensiones*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('administrador/dimensiones')}}" >
+                        <li class="{{ Request::is('dimensiones*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('dimensiones')}}" >
                                 <i class="fa fa-lightbulb"></i>
                                 <span class="hide-menu"> Dimensiones</span>
                             </a>

@@ -15,6 +15,7 @@ class CreateAsistenciaTable extends Migration
     {
         Schema::create('asistencia', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('estado');
 
             $table->unsignedInteger('dia_id');
             $table->foreign('dia_id')->references('id')->on('dia')->onDelete('cascade');
