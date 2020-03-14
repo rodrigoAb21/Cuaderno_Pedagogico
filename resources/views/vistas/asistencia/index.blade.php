@@ -5,10 +5,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="pb-2">Estudiantes
+                    <h3 class="pb-2">Asistencia
                         <div class="float-right">
-                            <a class="btn btn-outline-info" href="{{url('estudiantes/create')}}">
-                                <i class="fa fa-plus"></i> Nuevo
+                            <a class="btn btn-outline-info" href="{{url('asistencia/create')}}">
+                                <i class="fa fa-plus"></i> Nueva
                             </a>
                         </div>
                     </h3>
@@ -17,25 +17,25 @@
                             <thead>
                             <tr>
 
-                                <th>APELLIDO PATERNO</th>
-                                <th>APELLIDO MATERNO</th>
-                                <th>NOMBRE</th>
+                                <th>FECHA</th>
+                                <th>DIA</th>
+                                <th>TOTAL</th>
                                 <th>OPCIONES</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($estudiantes as $estudiante)
+                            @foreach($asistencias as $asistencia)
                                 <tr>
-                                    <td>{{$estudiante -> apellido_paterno}}</td>
-                                    <td>{{$estudiante -> apellido_materno}}</td>
-                                    <td>{{$estudiante -> nombre}}</td>
+                                    <td>{{$asistencia -> fecha}}</td>
+                                    <td>{{$asistencia -> nombre}}</td>
+                                    <td>{{$asistencia -> total}}</td>
                                     <td class="text-right ">
-                                        <a href="{{url('estudiantes/'.$estudiante->id.'/edit')}}">
-                                            <button class="btn btn-warning">
-                                                <i class="fa fa-pen"></i>
+                                        <a href="{{url('asistencia/'.$asistencia->id)}}">
+                                            <button class="btn btn-outline-info">
+                                                <i class="fa fa-eye"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$estudiante -> nombre}}', '{{url('estudiantes/'.$estudiante -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$asistencia -> fecha}}', '{{url('asistencia/'.$asistencia -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>
@@ -43,21 +43,21 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{$estudiantes->links('pagination.default')}}
+                        {{$asistencias->links('pagination.default')}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @include('views.modal')
+    @include('vistas.modal')
     @push('scripts')
         <script>
 
             function modalEliminar(nombre, url) {
                 $('#modalEliminarForm').attr("action", url);
                 $('#metodo').val("delete");
-                $('#modalEliminarTitulo').html("Eliminar estudiante");
-                $('#modalEliminarEnunciado').html("Realmente desea eliminar al estudiante: " + nombre + "?");
+                $('#modalEliminarTitulo').html("Eliminar la asistencia");
+                $('#modalEliminarEnunciado').html("Realmente desea eliminar la asistencia: " + nombre + "?");
                 $('#modalEliminar').modal('show');
             }
 

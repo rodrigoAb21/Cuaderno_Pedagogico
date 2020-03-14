@@ -15,13 +15,10 @@ class CreateAsistenciaTable extends Migration
     {
         Schema::create('asistencia', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('estado');
-
-            $table->unsignedInteger('dia_id');
-            $table->foreign('dia_id')->references('id')->on('dia')->onDelete('cascade');
-
-            $table->unsignedInteger('estudiante_id');
-            $table->foreign('estudiante_id')->references('id')->on('estudiante')->onDelete('cascade');
+            $table->text('nombre');
+            $table->text('abreviatura');
+            $table->date('fecha');
+            $table->integer('total');
         });
     }
 

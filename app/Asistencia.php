@@ -10,8 +10,13 @@ class Asistencia extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
-        'estado',
-        'estudiante_id',
-        'dia_id',
+        'nombre',
+        'abreviatura',
+        'fecha',
+        'total',
     ];
+
+    public function detalles(){
+        return $this->hasMany(Detalle::class);
+    }
 }

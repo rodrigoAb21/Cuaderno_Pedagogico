@@ -4,14 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Dia extends Model
+class Detalle extends Model
 {
-    protected $table = 'dia';
+    protected $table = 'detalle';
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
-        'nombre',
-        'abreviatura',
-        'fecha',
+        'estado',
+        'estudiante_id',
+        'asistencia_id',
     ];
+
+
+
 }

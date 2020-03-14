@@ -42,7 +42,7 @@
                     <a class="navbar-brand ligh" href="{{url('/')}}">
                         <!-- Logo icon -->
                         <b class="light-logo">
-                            <i class="fa fa-school"></i>
+                            <i class="fa fa-chalkboard-teacher"></i>
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
@@ -91,10 +91,10 @@
                         </li>
 
 
-                        <li class="{{ Request::is('asistencias*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('asistencias')}}" >
+                        <li class="{{ Request::is('asistencia*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('asistencia')}}" >
                                 <i class="fa fa-calendar-check"></i>
-                                <span class="hide-menu"> Asistencias</span>
+                                <span class="hide-menu"> Asistencia</span>
                             </a>
                         </li>
 

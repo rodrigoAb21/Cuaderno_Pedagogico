@@ -14,7 +14,7 @@ class EstudianteController extends Controller
      */
     public function index()
     {
-        return view('views.estudiantes.index', [
+        return view('vistas.estudiantes.index', [
             'estudiantes'=>Estudiante::orderBy('apellido_paterno','asc')
                 ->orderBy('apellido_materno','asc')
                 ->orderBy('nombre','asc')
@@ -28,7 +28,7 @@ class EstudianteController extends Controller
      */
     public function create()
     {
-        return view('views.estudiantes.create');
+        return view('vistas.estudiantes.create');
     }
 
     /**
@@ -76,7 +76,7 @@ class EstudianteController extends Controller
      */
     public function edit($id)
     {
-        return view('views.estudiantes.edit', ['estudiante'=>Estudiante::findOrFail($id)]);
+        return view('vistas.estudiantes.edit', ['estudiante'=>Estudiante::findOrFail($id)]);
     }
 
     /**
