@@ -16,7 +16,6 @@
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
-
                                 <th class="w-75">DIA</th>
                                 <th>FECHA</th>
                                 <th class="text-center">OPCIONES</th>

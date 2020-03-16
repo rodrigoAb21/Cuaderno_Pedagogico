@@ -29,10 +29,9 @@ class AsistenciaController extends Controller
     }
 
     public function show($id){
-        //dd(Ingreso::with('proveedor', 'detalles', 'detalles.insumo')->get());
         return view('vistas.asistencia.show',
             [
-                'ingreso' => Ingreso::findOrFail($id),
+                'asistencia' => Asistencia::findOrFail($id),
             ]);
     }
 
@@ -106,13 +105,7 @@ class AsistenciaController extends Controller
 
     public function destroy($id)
     {
-        $detalles = DetalleIngreso::where('ingreso_id', '=', $id)->get();
-        foreach ($detalles as $detalle){
-            $insumoAct = Insumo::findOrfail($detalle->insumo_id);
-            $insumoAct->existencias = $insumoAct->existencias - $detalle->cantidad;
-            $insumoAct->update();
-        }
-        $asistencia = Ingreso::findOrFail($id);
+        $asistencia = Asistencia::findOrFail($id);
         $asistencia->delete();
 
         return redirect('asistencia');

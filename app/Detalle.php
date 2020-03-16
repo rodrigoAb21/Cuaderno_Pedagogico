@@ -15,6 +15,10 @@ class Detalle extends Model
         'asistencia_id',
     ];
 
+    public function estudiante(){
+        return $this->belongsTo('App\Estudiante', 'estudiante_id', 'id');
+    }
+
 
 
 }
