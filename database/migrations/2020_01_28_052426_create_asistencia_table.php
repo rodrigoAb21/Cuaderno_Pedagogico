@@ -18,7 +18,6 @@ class CreateAsistenciaTable extends Migration
             $table->text('nombre');
             $table->text('abreviatura');
             $table->date('fecha');
-            $table->integer('total');
         });
     }
 

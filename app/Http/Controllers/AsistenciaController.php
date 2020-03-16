@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Asistencia;
+use App\Detalle;
 use App\Estudiante;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AsistenciaController extends Controller
 {
@@ -20,7 +22,9 @@ class AsistenciaController extends Controller
     {
         return view('vistas.asistencia.create',
             [
-                'estudiantes' => Estudiante::all(),
+                'estudiantes' => Estudiante::orderBy('apellido_paterno','asc')
+                    ->orderBy('apellido_materno','asc')
+                    ->orderBy('nombre','asc')->get(),
             ]);
     }
 
@@ -36,31 +40,54 @@ class AsistenciaController extends Controller
     public function store(Request $request)
     {
 
+        //date("w", strtotime('2020-03-14')); YYYY-MM-DD devuelve la pos del dia 0->domingo 6->sabado
+
         try {
             DB::beginTransaction();
 
-            $ingreso = new Ingreso();
-            $ingreso->fecha = $request['fecha'];
-            $ingreso->total = $request['total'];
-            $ingreso->proveedor_id = $request['proveedor_id'];
-            $ingreso->save();
+            $asistencia = new Asistencia();
+            $asistencia->fecha = $request['fecha'];
+            switch (date("w", strtotime($request['fecha']))) {
+                case 0:
+                    $asistencia->nombre = 'Domingo';
+                    $asistencia->abreviatura = 'D';
+                    break;
+                case 1:
+                    $asistencia->nombre = 'Lunes';
+                    $asistencia->abreviatura = 'L';
+                    break;
+                case 2:
+                    $asistencia->nombre = 'Martes';
+                    $asistencia->abreviatura = 'M';
+                    break;
+                case 3:
+                    $asistencia->nombre = 'Miercoles';
+                    $asistencia->abreviatura = 'X';
+                    break;
+                case 4:
+                    $asistencia->nombre = 'Jueves';
+                    $asistencia->abreviatura = 'J';
+                    break;
+                case 5:
+                    $asistencia->nombre = 'Viernes';
+                    $asistencia->abreviatura = 'V';
+                    break;
+                default:
+                    $asistencia->nombre = 'Sabado';
+                    $asistencia->abreviatura = 'S';
+                    break;
+            }
+            $asistencia->save();
 
-            $insumo = $request->get('idInsumoT');
-            $cant = $request->get('cantidadT');
-            $precio_unitario = $request->get('precioT');
+            $estudiante_id = $request->get('estudiante_id');
             $cont = 0;
 
-            while ($cont < count($insumo)) {
-                $detalle = new DetalleIngreso();
-                $detalle->cantidad = $cant[$cont];
-                $detalle->precio_unitario = $precio_unitario[$cont];
-                $detalle->insumo_id = $insumo[$cont];
-                $detalle->ingreso_id = $ingreso->id;
+            while ($cont < count($estudiante_id)) {
+                $detalle = new Detalle();
+                $detalle->asistencia_id = $asistencia->id;
+                $detalle->estudiante_id = $estudiante_id[$cont];
+                $detalle->estado = $request['estado'.$cont];
                 $detalle->save();
-
-                $insumoAct = Insumo::findOrfail($detalle->insumo_id);
-                $insumoAct->existencias = $insumoAct->existencias + $detalle->cantidad;
-                $insumoAct->update();
 
                 $cont = $cont + 1;
             }
@@ -85,8 +112,8 @@ class AsistenciaController extends Controller
             $insumoAct->existencias = $insumoAct->existencias - $detalle->cantidad;
             $insumoAct->update();
         }
-        $ingreso = Ingreso::findOrFail($id);
-        $ingreso->delete();
+        $asistencia = Ingreso::findOrFail($id);
+        $asistencia->delete();
 
         return redirect('asistencia');
     }

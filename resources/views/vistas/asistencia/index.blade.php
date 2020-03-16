@@ -17,19 +17,17 @@
                             <thead>
                             <tr>
 
+                                <th class="w-75">DIA</th>
                                 <th>FECHA</th>
-                                <th>DIA</th>
-                                <th>TOTAL</th>
-                                <th>OPCIONES</th>
+                                <th class="text-center">OPCIONES</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($asistencias as $asistencia)
                                 <tr>
-                                    <td>{{$asistencia -> fecha}}</td>
                                     <td>{{$asistencia -> nombre}}</td>
-                                    <td>{{$asistencia -> total}}</td>
-                                    <td class="text-right ">
+                                    <td>{{Carbon\Carbon::parse($asistencia -> fecha)->format('d/m/Y')}}</td>
+                                    <td class="text-center ">
                                         <a href="{{url('asistencia/'.$asistencia->id)}}">
                                             <button class="btn btn-outline-info">
                                                 <i class="fa fa-eye"></i>

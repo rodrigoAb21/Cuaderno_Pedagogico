@@ -13,7 +13,6 @@ class Asistencia extends Model
         'nombre',
         'abreviatura',
         'fecha',
-        'total',
     ];
 
     public function detalles(){
