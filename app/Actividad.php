@@ -12,7 +12,6 @@ class Actividad extends Model
     protected $fillable = [
         'nombre',
         'dimension_id',
-        'trimestre_id',
         'materia_id',
     ];
 

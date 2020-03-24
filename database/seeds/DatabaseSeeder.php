@@ -81,5 +81,23 @@ class DatabaseSeeder extends Seeder
             'telefono' => '356212',
 
         ]);
+
+        // ----------- TRIMESTRE -------------
+
+        DB::table('trimestre')->insert([
+            'nombre' => 'Primer Trimestre',
+            'inicio' => '2020-01-01',
+            'fin' => '2020-03-31',
+        ]);
+        DB::table('trimestre')->insert([
+            'nombre' => 'Segundo Trimestre',
+            'inicio' => '2020-04-01',
+            'fin' => '2020-08-31',
+        ]);
+        DB::table('trimestre')->insert([
+            'nombre' => 'Tercer Trimestre',
+            'inicio' => '2020-09-01',
+            'fin' => '2020-12-31',
+        ]);
     }
 }

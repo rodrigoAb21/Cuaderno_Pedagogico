@@ -20,9 +20,6 @@ class CreateActividadTable extends Migration
             $table->unsignedInteger('dimension_id');
             $table->foreign('dimension_id')->references('id')->on('dimension')->onDelete('cascade');
 
-            $table->unsignedInteger('trimestre_id');
-            $table->foreign('trimestre_id')->references('id')->on('trimestre')->onDelete('cascade');
-
             $table->unsignedInteger('materia_id');
             $table->foreign('materia_id')->references('id')->on('materia')->onDelete('cascade');
         });
