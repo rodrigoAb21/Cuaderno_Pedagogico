@@ -15,7 +15,7 @@ class TrimestreController extends Controller
     public function index()
     {
         return view('vistas.trimestres.index', [
-            'trimestres'=>Trimestre::paginate(10)]);
+            'trimestres'=>Trimestre::orderBy('inicio', 'asc')->paginate(10)]);
     }
 
     /**
