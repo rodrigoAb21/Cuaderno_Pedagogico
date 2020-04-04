@@ -28,7 +28,7 @@
                                     <input required
                                            type="date"
                                            class="form-control"
-                                           value="{{$trimestre->inicio}}"
+                                           value="{{Carbon\Carbon::createFromTimestamp($trimestre->inicio)->toDateString()}}"
                                            name="inicio">
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                     <input required
                                            type="date"
                                            class="form-control"
-                                           value="{{$trimestre->fin}}"
+                                           value="{{Carbon\Carbon::createFromTimestamp($trimestre->fin)->toDateString()}}"
                                            name="fin">
                                 </div>
                             </div>

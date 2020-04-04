@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Asistencia;
 use App\Detalle;
 use App\Estudiante;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,7 +46,7 @@ class AsistenciaController extends Controller
             DB::beginTransaction();
 
             $asistencia = new Asistencia();
-            $asistencia->fecha = $request['fecha'];
+            $asistencia->fecha = Carbon::createFromFormat('Y-m-d H:i:s',$request['fecha'].' 00:00:00')->timezone('America/La_Paz')->timestamp;
             switch (date("w", strtotime($request['fecha']))) {
                 case 0:
                     $asistencia->nombre = 'Domingo';

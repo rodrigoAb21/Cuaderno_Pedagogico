@@ -17,7 +17,7 @@ class CreateAsistenciaTable extends Migration
             $table->increments('id');
             $table->text('nombre');
             $table->text('abreviatura');
-            $table->date('fecha');
+            $table->text('fecha');
         });
     }
 

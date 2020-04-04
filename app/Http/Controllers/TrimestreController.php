@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Trimestre;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TrimestreController extends Controller
@@ -38,8 +39,9 @@ class TrimestreController extends Controller
     {
         $trimestre = new Trimestre();
         $trimestre->nombre = $request['nombre'];
-        $trimestre->inicio = $request['inicio'];
-        $trimestre->fin = $request['fin'];
+        $trimestre->inicio = Carbon::createFromFormat('Y-m-d H:i:s',$request['inicio'].' 00:00:00')->timezone('America/La_Paz')->timestamp;
+        $trimestre->fin = Carbon::createFromFormat('Y-m-d H:i:s',$request['fin'].' 00:00:00')->timezone('America/La_Paz')->timestamp;
+
 
         $trimestre->save();
 
@@ -80,8 +82,9 @@ class TrimestreController extends Controller
     {
         $trimestre = Trimestre::findOrFail($id);
         $trimestre->nombre = $request['nombre'];
-        $trimestre->inicio = $request['inicio'];
-        $trimestre->fin = $request['fin'];
+        $trimestre->inicio = Carbon::createFromFormat('Y-m-d H:i:s',$request['inicio'].' 00:00:00')->timezone('America/La_Paz')->timestamp;
+        $trimestre->fin = Carbon::createFromFormat('Y-m-d H:i:s',$request['fin'].' 00:00:00')->timezone('America/La_Paz')->timestamp;
+
 
         $trimestre->save();
 

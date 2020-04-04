@@ -17,17 +17,17 @@
                             <thead>
                             <tr>
                                 <th>NOMBRE</th>
-                                <th>INICIO</th>
-                                <th>FIN</th>
-                                <th>OPCIONES</th>
+                                <th class="text-center">INICIO</th>
+                                <th class="text-center">FIN</th>
+                                <th class="text-right ">OPCIONES</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($trimestres as $trimestre)
                                 <tr>
                                     <td>{{$trimestre->nombre}}</td>
-                                    <td class="text-center">{{Carbon\Carbon::parse($trimestre->fin)->format('d/m/Y')}}</td>
-                                    <td class="text-center">{{Carbon\Carbon::parse($trimestre->fin)->format('d/m/Y')}}</td>
+                                    <td class="text-center">{{Carbon\Carbon::createFromTimestamp($trimestre->inicio)->format('d/m/Y')}}</td>
+                                    <td class="text-center">{{Carbon\Carbon::createFromTimestamp($trimestre->fin)->format('d/m/Y')}}</td>
                                     <td class="text-right ">
                                         <a href="{{url('trimestres/'.$trimestre->id.'/edit')}}">
                                             <button class="btn btn-warning">

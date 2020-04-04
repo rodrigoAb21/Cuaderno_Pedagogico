@@ -19,7 +19,7 @@ class CreateEstudianteTable extends Migration
             $table->text('apellido_paterno');
             $table->text('apellido_materno');
             $table->text('rude');
-            $table->date('fnac');
+            $table->text('fnac');
             $table->text('ci');
             $table->integer('edad');
             $table->text('tutor');

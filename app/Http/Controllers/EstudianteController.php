@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Estudiante;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EstudianteController extends Controller
@@ -45,7 +46,7 @@ class EstudianteController extends Controller
         $estudiante->nombre = $request['nombre'];
         $estudiante->ci = $request['ci'];
         $estudiante->rude = $request['rude'];
-        $estudiante->fnac = $request['fnac'];
+        $estudiante->fnac = Carbon::createFromFormat('Y-m-d H:i:s',$request['fnac'].' 00:00:00')->timezone('America/La_Paz')->timestamp;
         $estudiante->edad = $request['edad'];
         $estudiante->tutor = $request['tutor'];
         $estudiante->telefono = $request['telefono'];
@@ -94,7 +95,7 @@ class EstudianteController extends Controller
         $estudiante->nombre = $request['nombre'];
         $estudiante->ci = $request['ci'];
         $estudiante->rude = $request['rude'];
-        $estudiante->fnac = $request['fnac'];
+        $estudiante->fnac = Carbon::createFromFormat('Y-m-d H:i:s',$request['fnac'].' 00:00:00')->timezone('America/La_Paz')->timestamp;
         $estudiante->edad = $request['edad'];
         $estudiante->tutor = $request['tutor'];
         $estudiante->telefono = $request['telefono'];

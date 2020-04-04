@@ -16,8 +16,8 @@ class CreateTrimestreTable extends Migration
         Schema::create('trimestre', function (Blueprint $table) {
             $table->increments('id');
             $table->text('nombre');
-            $table->date('inicio');
-            $table->date('fin');
+            $table->text('inicio');
+            $table->text('fin');
         });
     }
 

@@ -71,7 +71,7 @@
                                     <input required
                                            type="date"
                                            class="form-control"
-                                           value="{{$estudiante->fnac}}"
+                                           value="{{Carbon\Carbon::createFromTimestamp($estudiante->fnac)->toDateString()}}"
                                            name="fnac">
                                 </div>
                             </div>

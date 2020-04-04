@@ -25,7 +25,7 @@
                             @foreach($asistencias as $asistencia)
                                 <tr>
                                     <td>{{$asistencia -> nombre}}</td>
-                                    <td>{{Carbon\Carbon::parse($asistencia -> fecha)->format('d/m/Y')}}</td>
+                                    <td>{{Carbon\Carbon::createFromTimestamp($asistencia->fecha)->format('d/m/Y')}}</td>
                                     <td class="text-center ">
                                         <a href="{{url('asistencia/'.$asistencia->id)}}">
                                             <button class="btn btn-outline-info">
