@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::resource('estudiantes', 'EstudianteController');
 Route::resource('asistencia', 'AsistenciaController');
 Route::resource('trimestres', 'TrimestreController');
+Route::resource('materias', 'MateriaController');
+Route::resource('dimensiones', 'DimensionController');

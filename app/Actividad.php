@@ -11,6 +11,7 @@ class Actividad extends Model
     public $timestamps = false;
     protected $fillable = [
         'nombre',
+        'fecha',
         'dimension_id',
         'materia_id',
     ];

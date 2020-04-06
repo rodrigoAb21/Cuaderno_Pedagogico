@@ -5,9 +5,9 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="pb-2">Asistencia
+                    <h3 class="pb-2">Materias
                         <div class="float-right">
-                            <a class="btn btn-outline-info" href="{{url('asistencia/create')}}">
+                            <a class="btn btn-outline-info" href="{{url('materias/create')}}">
                                 <i class="fa fa-plus"></i> Nueva
                             </a>
                         </div>
@@ -16,23 +16,21 @@
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
-                                <th class="w-75">DIA</th>
-                                <th>FECHA</th>
-                                <th class="text-center">OPCIONES</th>
+                                <th>NOMBRE</th>
+                                <th class="text-right ">OPCIONES</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($asistencias as $asistencia)
+                            @foreach($materias as $materia)
                                 <tr>
-                                    <td>{{$asistencia -> nombre}}</td>
-                                    <td>{{Carbon\Carbon::createFromTimestamp($asistencia->fecha)->format('d/m/Y')}}</td>
-                                    <td class="text-center ">
-                                        <a href="{{url('asistencia/'.$asistencia->id)}}">
-                                            <button class="btn btn-outline-info">
-                                                <i class="fa fa-eye"></i>
+                                    <td>{{$materia->nombre}}</td>
+                                  <td class="text-right ">
+                                        <a href="{{url('materias/'.$materia->id.'/edit')}}">
+                                            <button class="btn btn-warning">
+                                                <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{Carbon\Carbon::createFromTimestamp($asistencia->fecha)->format('d/m/Y')}}', '{{url('asistencia/'.$asistencia -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$materia -> nombre}}', '{{url('materias/'.$materia -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>
@@ -40,7 +38,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{$asistencias->links('pagination.default')}}
+                        {{$materias->links('pagination.default')}}
                     </div>
                 </div>
             </div>
@@ -53,8 +51,8 @@
             function modalEliminar(nombre, url) {
                 $('#modalEliminarForm').attr("action", url);
                 $('#metodo').val("delete");
-                $('#modalEliminarTitulo').html("Eliminar la asistencia");
-                $('#modalEliminarEnunciado').html("Realmente desea eliminar la asistencia: " + nombre + "?");
+                $('#modalEliminarTitulo').html("Eliminar materia");
+                $('#modalEliminarEnunciado').html("Realmente desea eliminar al materia: " + nombre + "?");
                 $('#modalEliminar').modal('show');
             }
 

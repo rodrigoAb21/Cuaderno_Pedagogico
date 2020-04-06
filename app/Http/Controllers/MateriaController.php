@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Trimestre;
-use Carbon\Carbon;
+use App\Materia;
 use Illuminate\Http\Request;
 
-class TrimestreController extends Controller
+class MateriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class TrimestreController extends Controller
      */
     public function index()
     {
-        return view('vistas.trimestres.index', [
-            'trimestres'=>Trimestre::orderBy('inicio', 'asc')->paginate(10)]);
+        return view('vistas.materias.index', [
+            'materias'=>Materia::paginate(10)]);
     }
 
     /**
@@ -26,7 +25,7 @@ class TrimestreController extends Controller
      */
     public function create()
     {
-        return view('vistas.trimestres.create');
+        return view('vistas.materias.create');
     }
 
     /**
@@ -37,15 +36,12 @@ class TrimestreController extends Controller
      */
     public function store(Request $request)
     {
-        $trimestre = new Trimestre();
-        $trimestre->nombre = $request['nombre'];
-        $trimestre->inicio = Carbon::createFromFormat('Y-m-d H:i:s',$request['inicio'].' 00:00:00')->timezone('America/La_Paz')->timestamp;
-        $trimestre->fin = Carbon::createFromFormat('Y-m-d H:i:s',$request['fin'].' 00:00:00')->timezone('America/La_Paz')->timestamp;
+        $materia = new Materia();
+        $materia->nombre = $request['nombre'];
+        
+        $materia->save();
 
-
-        $trimestre->save();
-
-        return redirect('trimestres');
+        return redirect('materias');
 
     }
 
@@ -68,7 +64,7 @@ class TrimestreController extends Controller
      */
     public function edit($id)
     {
-        return view('vistas.trimestres.edit', ['trimestre'=>Trimestre::findOrFail($id)]);
+        return view('vistas.materias.edit', ['materia'=>Materia::findOrFail($id)]);
     }
 
     /**
@@ -80,14 +76,12 @@ class TrimestreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $trimestre = Trimestre::findOrFail($id);
-        $trimestre->nombre = $request['nombre'];
-        $trimestre->inicio = Carbon::createFromFormat('Y-m-d H:i:s',$request['inicio'].' 00:00:00')->timezone('America/La_Paz')->timestamp;
-        $trimestre->fin = Carbon::createFromFormat('Y-m-d H:i:s',$request['fin'].' 00:00:00')->timezone('America/La_Paz')->timestamp;
+        $materia = Materia::findOrFail($id);
+        $materia->nombre = $request['nombre'];
 
-        $trimestre->update();
+        $materia->update();
 
-        return redirect('trimestres');
+        return redirect('materias');
 
     }
 
@@ -99,9 +93,9 @@ class TrimestreController extends Controller
      */
     public function destroy($id)
     {
-        $trimestre = Trimestre::findOrFail($id);
-        $trimestre->delete();
+        $materia = Materia::findOrFail($id);
+        $materia->delete();
 
-        return redirect('trimestres');
+        return redirect('materias');
     }
 }

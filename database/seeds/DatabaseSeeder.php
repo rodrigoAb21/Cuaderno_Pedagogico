@@ -86,18 +86,47 @@ class DatabaseSeeder extends Seeder
 
         DB::table('trimestre')->insert([
             'nombre' => 'Primer Trimestre',
-            'inicio' => '1598846400',
-            'fin' => '1598846400',
+            'inicio' => '1577851200',
+            'fin' => '1588219200',
         ]);
         DB::table('trimestre')->insert([
             'nombre' => 'Segundo Trimestre',
-            'inicio' => '1598846400',
+            'inicio' => '1588305600',
             'fin' => '1598846400',
         ]);
         DB::table('trimestre')->insert([
             'nombre' => 'Tercer Trimestre',
-            'inicio' => '1598846400',
-            'fin' => '1598846400',
+            'inicio' => '1598932800',
+            'fin' => '1609387200',
+        ]);
+
+        // ----------- MATERIAS --------------
+        DB::table('materia')->insert([
+            'nombre' => 'Comunicacion y lenguajes',
+        ]);
+        DB::table('materia')->insert([
+            'nombre' => 'Ciencias Sociales',
+        ]);
+        DB::table('materia')->insert([
+            'nombre' => 'Educacion Musical',
+        ]);
+        DB::table('materia')->insert([
+            'nombre' => 'Educacion Fisica y Deportes',
+        ]);
+        DB::table('materia')->insert([
+            'nombre' => 'Artes Plasticas y visuales',
+        ]);
+        DB::table('materia')->insert([
+            'nombre' => 'Ciencias Naturales',
+        ]);
+        DB::table('materia')->insert([
+            'nombre' => 'Matematicas',
+        ]);
+        DB::table('materia')->insert([
+            'nombre' => 'Tecnica Tecnologica',
+        ]);
+        DB::table('materia')->insert([
+            'nombre' => 'Valores, espiritualidades y religiones',
         ]);
     }
 }

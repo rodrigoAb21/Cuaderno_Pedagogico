@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="pb-2">Asistencia {{$asistencia->nombre}} - {{Carbon\Carbon::parse($asistencia -> fecha)->format('d/m/Y')}}</h3>
+                    <h3 class="pb-2">Asistencia: {{$asistencia->nombre}} - {{Carbon\Carbon::createFromTimestamp($asistencia->fecha)->format('d/m/Y')}}</h3>
 
                         <div class="col">
                             <div class="table-responsive">
