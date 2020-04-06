@@ -22,3 +22,4 @@ Route::resource('asistencia', 'AsistenciaController');
 Route::resource('trimestres', 'TrimestreController');
 Route::resource('materias', 'MateriaController');
 Route::resource('dimensiones', 'DimensionController');
+Route::resource('actividades', 'ActividadController');

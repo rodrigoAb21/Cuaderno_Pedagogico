@@ -5,10 +5,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="pb-2">Estudiantes
+                    <h3 class="pb-2">Actividades
                         <div class="float-right">
-                            <a class="btn btn-outline-info" href="{{url('estudiantes/create')}}">
-                                <i class="fa fa-plus"></i> Nuevo
+                            <a class="btn btn-outline-info" href="{{url('actividades/create')}}">
+                                <i class="fa fa-plus"></i> Nueva
                             </a>
                         </div>
                     </h3>
@@ -16,26 +16,27 @@
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
-
-                                <th>APELLIDO PATERNO</th>
-                                <th>APELLIDO MATERNO</th>
                                 <th>NOMBRE</th>
-                                <th>OPCIONES</th>
+                                <th>FECHA</th>
+                                <th>MATERIA</th>
+                                <th>DIMENSION</th>
+                                <th class="text-center">OPCIONES</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($estudiantes as $estudiante)
+                            @foreach($actividades as $actividad)
                                 <tr>
-                                    <td>{{$estudiante -> apellido_paterno}}</td>
-                                    <td>{{$estudiante -> apellido_materno}}</td>
-                                    <td>{{$estudiante -> nombre}}</td>
-                                    <td class="text-right ">
-                                        <a href="{{url('estudiantes/'.$estudiante->id.'/edit')}}">
+                                    <td>{{$actividad->nombre}}</td>
+                                    <td>{{Carbon\Carbon::createFromTimestamp($actividad->fecha)->format('d/m/Y')}}</td>
+                                    <td>{{$actividad->materia->nombre}}</td>
+                                    <td>{{$actividad->dimension->nombre}}</td>
+                                    <td class="text-center ">
+                                        <a href="{{url('actividades/'.$actividad->id.'/edit')}}">
                                             <button class="btn btn-warning">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$estudiante -> apellido_paterno}} {{$estudiante -> apellido_materno}}, {{$estudiante -> nombre}}', '{{url('estudiantes/'.$estudiante -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$actividad->nombre}}', '{{url('actividades/'.$actividad -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>
@@ -43,7 +44,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{$estudiantes->links('pagination.default')}}
+                        {{$actividades->links('pagination.default')}}
                     </div>
                 </div>
             </div>
@@ -56,8 +57,8 @@
             function modalEliminar(nombre, url) {
                 $('#modalEliminarForm').attr("action", url);
                 $('#metodo').val("delete");
-                $('#modalEliminarTitulo').html("Eliminar estudiante");
-                $('#modalEliminarEnunciado').html("Realmente desea eliminar al estudiante: " + nombre + "?");
+                $('#modalEliminarTitulo').html("Eliminar la actividad");
+                $('#modalEliminarEnunciado').html("Realmente desea eliminar la actividad: " + nombre + "?");
                 $('#modalEliminar').modal('show');
             }
 

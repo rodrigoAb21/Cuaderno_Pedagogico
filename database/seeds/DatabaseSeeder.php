@@ -128,5 +128,34 @@ class DatabaseSeeder extends Seeder
         DB::table('materia')->insert([
             'nombre' => 'Valores, espiritualidades y religiones',
         ]);
+
+        // ----------- DIMENSIONES -----------
+
+        DB::table('dimension')->insert([
+            'nombre' => 'SER',
+            'factor' => '0.10',
+        ]);
+        DB::table('dimension')->insert([
+            'nombre' => 'SABER',
+            'factor' => '0.35',
+        ]);
+        DB::table('dimension')->insert([
+            'nombre' => 'HACER',
+            'factor' => '0.35',
+        ]);
+        DB::table('dimension')->insert([
+            'nombre' => 'DECIDIR',
+            'factor' => '0.10',
+        ]);
+
+        DB::table('dimension')->insert([
+            'nombre' => 'SER AUTOEVALUACION',
+            'factor' => '0.05',
+        ]);
+
+        DB::table('dimension')->insert([
+            'nombre' => 'DECIDIR AUTOEVALUACION',
+            'factor' => '0.05',
+        ]);
     }
 }
