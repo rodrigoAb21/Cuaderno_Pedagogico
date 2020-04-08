@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::resource('estudiantes', 'EstudianteController');
+Route::get('asistencia/reporte/descargar/{id}/{nombre}', 'AsistenciaController@reporte');
 Route::resource('asistencia', 'AsistenciaController');
 Route::resource('trimestres', 'TrimestreController');
 Route::resource('materias', 'MateriaController');

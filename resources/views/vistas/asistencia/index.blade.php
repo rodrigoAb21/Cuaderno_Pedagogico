@@ -16,7 +16,7 @@
                         <table class="table table-hover table-bordered color-table info-table">
                             <thead>
                             <tr>
-                                <th class="w-75">DIA</th>
+                                <th class="w-50">DIA</th>
                                 <th>FECHA</th>
                                 <th class="text-center">OPCIONES</th>
                             </tr>
@@ -30,6 +30,11 @@
                                         <a href="{{url('asistencia/'.$asistencia->id)}}">
                                             <button class="btn btn-outline-info">
                                                 <i class="fa fa-eye"></i>
+                                            </button>
+                                        </a>
+                                        <a href="{{url('asistencia/reporte/descargar/'.$asistencia->id.'/asistencia-'.Carbon\Carbon::createFromTimestamp($asistencia->fecha)->format('d-m-Y'))}}">
+                                            <button class="btn btn-outline-warning">
+                                                <i class="fa fa-file-download"></i>
                                             </button>
                                         </a>
                                         <button type="button" class="btn btn-danger" onclick="modalEliminar('{{Carbon\Carbon::createFromTimestamp($asistencia->fecha)->format('d/m/Y')}}', '{{url('asistencia/'.$asistencia -> id)}}')">

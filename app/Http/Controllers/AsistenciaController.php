@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Asistencia;
 use App\Detalle;
 use App\Estudiante;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -110,5 +111,10 @@ class AsistenciaController extends Controller
         $asistencia->delete();
 
         return redirect('asistencia');
+    }
+
+    public function reporte($id, $nombre){
+        $pdf = PDF::loadView('vistas.asistencia.reporte',[ 'asistencia' => Asistencia::findOrFail($id)])->setPaper('letter', 'portrait');
+        return $pdf->download($nombre.'.pdf');
     }
 }
